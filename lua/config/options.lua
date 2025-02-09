@@ -8,6 +8,9 @@ vim.g.lazyvim_blink_main = true
 -- vim.o.guifont = "JetBrainsMono Nerd Font Mono:h16"
 vim.g.mkdp_auto_close = 0
 vim.g.mkdp_combine_preview = 1
+vim.opt.cursorcolumn = true
+vim.opt.termguicolors = true
+-- vim.cmd.colorscheme("melange")
 require("util.neovide")
 
 -- vim.g.lazyvim_python_lsp = "pylyzer"
