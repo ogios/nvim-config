@@ -3,6 +3,24 @@ return {
   --   "rebelot/kanagawa.nvim",
   -- },
   { "savq/melange-nvim" },
+  { "bluz71/vim-moonfly-colors", name = "moonfly" },
+  {
+    "nyoom-engineering/oxocarbon.nvim",
+  },
+  {
+    "maxmx03/fluoromachine.nvim",
+    -- config = function()
+    --   local fm = require("fluoromachine")
+    --
+    --   fm.setup({
+    --     glow = true,
+    --     theme = "fluoromachine",
+    --     transparent = false,
+    --   })
+    --
+    --   vim.cmd.colorscheme("fluoromachine")
+    -- end,
+  },
   {
     "mvllow/modes.nvim",
     opts = {
@@ -38,7 +56,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "melange",
+      colorscheme = "moonfly",
     },
   },
 }
