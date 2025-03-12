@@ -38,4 +38,23 @@ return {
 
   -- rust
   { import = "plugins.code.lang.rust" },
+
+  -- python
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        --- @type lspconfig.options.basedpyright
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              analysis = {
+                typeCheckingMode = "standard",
+              },
+            },
+          },
+        },
+      },
+    },
+  },
 }
