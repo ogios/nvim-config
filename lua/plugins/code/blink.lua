@@ -1,10 +1,14 @@
 return {
   {
     "saghen/blink.cmp",
-    version = "*",
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
+      fuzzy = {
+        prebuilt_binaries = {
+          download = true,
+        },
+      },
       completion = {
         documentation = {
           auto_show_delay_ms = 0,
