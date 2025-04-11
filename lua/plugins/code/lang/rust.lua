@@ -1,7 +1,8 @@
 return {
   {
-    "folke/neoconf.nvim",
-    config = function()
+    "mrcjkb/rustaceanvim",
+    opts = function(_, opts)
+      -- neoconf
       require("neoconf.plugins").register({
         name = "rust",
         on_schema = function(schema)
@@ -20,13 +21,7 @@ return {
           })
         end,
       })
-      require("neoconf").setup()
-    end,
-  },
 
-  {
-    "mrcjkb/rustaceanvim",
-    opts = function(_, opts)
       opts.server.on_attach = function(_, bufnr)
         vim.keymap.set("n", "<leader>ce", function()
           vim.cmd.RustLsp("expandMacro")

@@ -14,6 +14,16 @@ return {
           auto_show_delay_ms = 0,
         },
 
+        ghost_text = {
+          enabled = false,
+        },
+
+        list = {
+          selection = {
+            auto_insert = false,
+          },
+        },
+
         menu = {
           draw = {
             -- We don't need label_description now because label and label_description are already
@@ -57,6 +67,8 @@ return {
           "select_prev",
           "fallback",
         },
+        ["<M-e>"] = { "hide" },
+        ["<M-w>"] = { "show", "show_documentation", "hide_documentation" },
       },
     },
   },
