@@ -2,6 +2,7 @@ return {
   -- dart
   {
     "akinsho/flutter-tools.nvim",
+    enabled = false,
     lazy = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
