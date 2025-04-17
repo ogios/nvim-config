@@ -4,9 +4,9 @@ return {
   -- },
   -- { "savq/melange-nvim" },
   { "bluz71/vim-moonfly-colors", name = "moonfly" },
-  {
-    "nyoom-engineering/oxocarbon.nvim",
-  },
+  -- {
+  --   "nyoom-engineering/oxocarbon.nvim",
+  -- },
   -- {
   --   "maxmx03/fluoromachine.nvim",
   --   -- config = function()
@@ -53,6 +53,7 @@ return {
   -- },
   {
     "rasulomaroff/reactive.nvim",
+    event = "VeryLazy",
     config = true,
     opts = {
       builtin = {

@@ -84,6 +84,7 @@ local M = {
   { "<S-Tab>", "<CMD>bprevious<CR>", "Previous tab", mode = "n" },
   -- buffer
 }
+
 local map = LazyVim.safe_keymap_set
 for _, m in pairs(M) do
   if vim.isarray(m.mode) then

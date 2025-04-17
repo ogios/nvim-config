@@ -8,6 +8,7 @@
 return {
   "NvChad/nvim-colorizer.lua",
   opt = true,
+  event = "BufRead",
   config = function()
     require("colorizer").setup({
       filetypes = {
