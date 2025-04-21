@@ -58,8 +58,8 @@ local M = {
   { "<leader>lD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
   {
     "<leader>lra",
-    "<leader>cr",
-    desc = "IncRename",
+    require("live-rename").map({ insert = true }),
+    desc = "live-rename",
     mode = "n",
   },
   -- lsp
