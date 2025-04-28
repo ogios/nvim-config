@@ -20,7 +20,6 @@ vim.list_extend(spec, {
   { import = "plugins.code" },
   { import = "plugins.others" },
   { import = "plugins.override" },
-  { import = "plugins.seldom" },
 })
 
 require("lazy").setup({

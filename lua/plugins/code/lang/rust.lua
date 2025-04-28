@@ -63,6 +63,7 @@ return {
 
         local cargo = opts.server.default_settings["rust-analyzer"].cargo or {}
         cargo.features = specify_features
+        cargo.allFeatures = false
         opts.server.default_settings["rust-analyzer"].cargo = cargo
       end
 
