@@ -1,7 +1,7 @@
 return {
   {
     "augmentcode/augment.vim",
-    --  enabled = false,
+    enabled = false,
     event = "VeryLazy",
     keys = {
       { "<M-Tab>", "<cmd>call augment#Accept()<cr>", mode = "i", desc = "Accept augment completion" },
