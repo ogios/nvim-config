@@ -115,9 +115,8 @@ return {
       setup_cfgs()
       setup_no_default_target()
       setup_feature()
-      -- setup_snippet()
 
-      LazyVim.info(vim.inspect(opts.server.default_settings["rust-analyzer"].cargo))
+      LazyVim.info(vim.inspect(opts.server.default_settings["rust-analyzer"]))
     end,
   },
 }

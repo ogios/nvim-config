@@ -1,6 +1,9 @@
 return {
   {
     "saghen/blink.cmp",
+    -- enabled = false,
+    version = false,
+    build = "cargo build --release",
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
@@ -9,9 +12,10 @@ return {
           download = true,
         },
       },
+
       completion = {
         documentation = {
-          auto_show_delay_ms = 0,
+          auto_show_delay_ms = 10,
         },
 
         ghost_text = {

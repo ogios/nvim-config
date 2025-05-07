@@ -5,7 +5,7 @@
 vim.opt.wrap = true
 vim.opt.background = "dark"
 vim.g.snacks_animate = false
-vim.g.lazyvim_blink_main = true
+-- vim.g.lazyvim_blink_main = true
 -- vim.o.guifont = "JetBrainsMono Nerd Font Mono:h16"
 vim.g.mkdp_auto_close = 0
 vim.g.mkdp_combine_preview = 1
