@@ -89,6 +89,7 @@ return {
         require("copilot").setup({
           copilot_model = "gpt-4o-copilot",
           panel = {
+            -- auto_refresh = true,
             layout = {
               position = "right",
             },
