@@ -58,4 +58,23 @@ return {
       },
     },
   },
+
+  -- json
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        --- @type lspconfig.options.jsonls
+        jsonls = {
+          settings = {
+            json = {
+              schemas = {
+                { fileMatch = { "*.json", "*.jsonc" }, schema = { allowTrailingCommas = true } },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
 }
