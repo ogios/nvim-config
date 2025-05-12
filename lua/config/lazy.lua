@@ -17,7 +17,6 @@ local spec = {
 }
 
 vim.list_extend(spec, {
-  { import = "plugins" },
   { import = "plugins.code" },
   { import = "plugins.others" },
   { import = "plugins.override" },
