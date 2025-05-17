@@ -32,19 +32,19 @@ return {
         "typescript",
         "vim",
         "yaml",
-        "hyprlang",
-        "kdl",
 
-        -- other
         "tsx",
         "typescript",
-        -- add
         "css",
         "vue",
         "java",
         "go",
         "jsonc",
         "scss",
+
+        "hyprlang",
+        "kdl",
+        "vhs",
       })
     end,
   },
