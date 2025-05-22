@@ -1,7 +1,11 @@
 vim.o.guifont = "JetBrainsMonoNL Nerd Font:h16"
-local key = vim.keymap
 if vim.g.neovide then
-  key.set({ "n", "v" }, "<C-S-v>", '"+p')
+  vim.keymap.set("i", "<C-S-v>", "<C-r><C-o>+") -- paste (insert)
+  vim.keymap.set("n", "<C-S-v>", "i<C-r><C-o>+<Esc>l") -- paste (normal)
+  vim.keymap.set("x", "<C-S-v>", '"+P') -- paste (visual)
+  vim.keymap.set("c", "<C-S-v>", "<C-r>+") -- paste (command)
+  vim.keymap.set("t", "<C-S-v>", [[<C-\><C-N>"+P]]) -- Paste terminal mode
+
   -- vim.g.neovide_underline_automatic_scaling = true
 
   -- vim.g.neovide_floating_blur_amount_x = 2.0
