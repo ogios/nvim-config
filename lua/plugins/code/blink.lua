@@ -2,8 +2,8 @@ return {
   {
     "saghen/blink.cmp",
     -- enabled = false,
-    version = false,
-    build = "cargo build --release",
+    -- version = false,
+    -- build = "cargo build --release",
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
