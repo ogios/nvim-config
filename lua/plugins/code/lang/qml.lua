@@ -10,6 +10,8 @@ function reload_current_buffer()
   vim.cmd("edit " .. file_path)
 end
 
+vim.keymap.set("n", "<leader>rl", reload_current_buffer, { desc = "Reload current buffer" })
+
 return {
   {
     "stevearc/conform.nvim",
@@ -43,9 +45,9 @@ return {
           -- cmd = { "/usr/lib/qt6/bin/qmlls", "-E", "-b", "/home/ogios/.config/quickshell/build" },
           cmd = { "/usr/lib/qt6/bin/qmlls", "-E" },
           single_file_support = false,
-          on_exit = function()
-            vim.schedule(reload_current_buffer)
-          end,
+          -- on_exit = function()
+          --   vim.schedule(reload_current_buffer)
+          -- end,
           log_level = vim.lsp.protocol.MessageType.Debug,
         },
       },
