@@ -77,4 +77,7 @@ return {
       },
     },
   },
+
+  -- qml
+  { import = "plugins.code.lang.qml" },
 }

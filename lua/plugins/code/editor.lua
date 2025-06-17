@@ -45,6 +45,8 @@ return {
         "hyprlang",
         "kdl",
         "vhs",
+
+        "qmljs",
       })
     end,
   },
