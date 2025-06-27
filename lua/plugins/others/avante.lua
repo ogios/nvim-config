@@ -88,6 +88,15 @@ return {
       config = function()
         require("copilot").setup({
           copilot_model = "gpt-4o-copilot",
+          filetypes = {
+            markdown = true,
+            -- gitcommit = true,
+            -- gitrebase = true,
+            -- diff = true,
+            -- help = true,
+            -- text = true,
+            -- plaintext = true,
+          },
           panel = {
             -- auto_refresh = true,
             layout = {
