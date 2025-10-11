@@ -82,14 +82,7 @@ return {
         },
         sections = {
           {
-            section = "terminal",
-            -- cmd = 'chafa -p off -f symbols --symbols=sextant --speed=0.9 --scale max "$HOME/Pictures/temp/b07a5b32cc3b7db39f9a2fadec2ae004.gif"',
-            cmd = [[export DIR=$HOME/Pictures/temp && chafa -p on -O 9 -f symbols --symbols=sextant --speed=0.9 --scale max "$DIR/$(cd $DIR && shuf -n1 -e *)" --clear]],
-            indent = 10,
-            ttl = 0,
-            enabled = true,
-            height = 20,
-            padding = 1,
+            section = "header",
           },
           { section = "startup" },
         },

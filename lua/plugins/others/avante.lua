@@ -58,7 +58,7 @@ return {
     "MunifTanjim/nui.nvim",
     --- The below dependencies are optional,
     "ibhagwan/fzf-lua", -- for file_selector provider fzf
-    "echasnovski/mini.icons",
+    "nvim-mini/mini.icons",
     {
       "zbirenbaum/copilot.lua",
       cmd = "Copilot",

@@ -20,7 +20,6 @@ local function postfix_wrap_type(trig, call, requires)
 end
 local snippets = {
   custom = {
-
     ["Extend::extend"] = postfix_wrap_call("extend", "_.extend"),
     ["Arc::new"] = postfix_wrap_call("arc", "Arc::new", "std::sync::Arc"),
     ["Mutex::new"] = postfix_wrap_call("mutex", "Mutex::new", "std::sync::Mutex"),
@@ -200,46 +199,11 @@ return {
         fullFunctionSignatures = { enable = true },
         termSearch = { enable = true },
       }
-      -- local st = opts.server.default_settings["rust-analyzer"]
-      -- opts.server.default_settings["rust-analyzer"] = vim.tbl_extend("force", st or {}, {
-      --   diagnostics = {
-      --     enable = true,
-      --     experimental = {
-      --       enable = true,
-      --     },
-      --   },
-      --   completion = {
-      --     snippets = snippets,
-      --     postfix = { enable = true },
-      --     fullFunctionSignatures = { enable = true },
-      --     termSearch = { enable = true },
-      --   },
-      --   hover = {
-      --     actions = {
-      --       enable = true,
-      --       references = { enable = true },
-      --       run = { enable = true },
-      --     },
-      --   },
-      --   rustfmt = {
-      --     rangeFormatting = { enable = true },
-      --   },
-      --   typing = {
-      --     autoClosingAngleBrackets = { enable = true },
-      --   },
-      -- })
+      opts.server.default_settings["rust-analyzer"].cargo.buildScripts = {
+        enable = true,
+        rebuildOnSave = true,
+      }
 
-      -- snippet
-      -- LazyVim.info(vim.inspect(opts.server.default_settings["rust-analyzer"].completion))
-      -- opts.server.default_settings["rust-analyzer"].completion.snippets = {
-      --   custom = {
-      --     ["println directly"] = {
-      --       postfix = "pl",
-      --       body = 'println!("{}", ${receiver});',
-      --       scope = "expr",
-      --     },
-      --   },
-      -- }
       setup_cfgs()
       setup_no_default_target()
       setup_feature()
