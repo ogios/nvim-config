@@ -107,7 +107,7 @@ return {
             auto_trigger = true,
             debounce = 200,
             keymap = {
-              accept = "<M-Tab>",
+              accept = "<M-q>",
               accept_word = false,
               accept_line = false,
               next = "<M-]>",

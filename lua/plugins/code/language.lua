@@ -46,14 +46,34 @@ return {
     opts = {
       servers = {
         --- @type lspconfig.options.basedpyright
-        basedpyright = {
-          settings = {
-            basedpyright = {
-              analysis = {
-                typeCheckingMode = "standard",
-              },
-            },
-          },
+        -- basedpyright = {
+        --   settings = {
+        --     basedpyright = {
+        --       analysis = {
+        --         typeCheckingMode = "standard",
+        --       },
+        --     },
+        --   },
+        -- },
+        --- @type lspconfig.options.pyrefly
+        pyrefly = {
+          mason = false,
+        },
+      },
+    },
+  },
+  {
+    "nvim-neotest/neotest",
+    optional = true,
+    dependencies = {
+      "nvim-neotest/neotest-python",
+    },
+    opts = {
+      adapters = {
+        ["neotest-python"] = {
+          -- Here you can specify the settings for the adapter, i.e.
+          -- runner = "pytest",
+          -- python = ".venv/bin/python",
         },
       },
     },
