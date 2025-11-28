@@ -2,7 +2,7 @@
 -- vim.o.guifont = "0xProto Nerd Font:h16"
 -- vim.o.guifont = "FantasqueSansM Nerd Font:h18"
 -- vim.o.guifont = "ComicShannsMono Nerd Font:h18"
-vim.o.guifont = "TX-02:h18"
+vim.o.guifont = "TX-02:h16"
 if vim.g.neovide then
   vim.keymap.set("i", "<C-S-v>", "<C-r><C-o>+") -- paste (insert)
   vim.keymap.set("n", "<C-S-v>", "i<C-r><C-o>+<Esc>l") -- paste (normal)

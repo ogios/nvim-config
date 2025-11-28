@@ -16,6 +16,12 @@ return {
         --- @type lspconfig.options.pyrefly
         pyrefly = {
           -- cmd = { "pyrefly", "lsp", "-v" },
+          cmd = {
+            "/home/ogios/work/pyrefly/target/release/pyrefly",
+            "lsp",
+            -- "-v"
+          },
+          mason = false,
         },
 
         ruff = {
