@@ -18,6 +18,7 @@ return {
           -- cmd = { "pyrefly", "lsp", "-v" },
           cmd = {
             "/home/ogios/work/pyrefly/target/release/pyrefly",
+            -- "/home/ogios/work/pyrefly/target/debug/pyrefly",
             "lsp",
             -- "-v"
           },
@@ -53,11 +54,6 @@ return {
           Snacks.util.lsp.on({ name = "ruff" }, function(_, client)
             -- Disable hover in favor of Pyright
             client.server_capabilities.hoverProvider = false
-          end)
-        end,
-        pyrefly = function()
-          Snacks.util.lsp.on({ name = "pyrefly" }, function(_, client)
-            client.capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
           end)
         end,
       },
