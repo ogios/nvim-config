@@ -13,6 +13,7 @@ end
 vim.keymap.set("n", "<leader>rl", reload_current_buffer, { desc = "Reload current buffer" })
 
 return {
+
   {
     "stevearc/conform.nvim",
     opts = {
@@ -50,6 +51,16 @@ return {
           -- end,
           log_level = vim.lsp.protocol.MessageType.Debug,
         },
+      },
+    },
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "qmljs",
+        "qmldir",
       },
     },
   },

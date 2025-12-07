@@ -1,4 +1,6 @@
 return {
+  { import = "lazyvim.plugins.extras.formatting.black" },
+
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -17,7 +19,7 @@ return {
         pyrefly = {
           -- cmd = { "pyrefly", "lsp", "-v" },
           cmd = {
-            "/home/ogios/work/pyrefly/target/release/pyrefly",
+            vim.fn.expand("~") .. "/work/pyrefly/target/release/pyrefly",
             -- "/home/ogios/work/pyrefly/target/debug/pyrefly",
             "lsp",
             -- "-v"
@@ -72,6 +74,15 @@ return {
           -- runner = "pytest",
           -- python = ".venv/bin/python",
         },
+      },
+    },
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "python",
       },
     },
   },

@@ -1,41 +1,12 @@
 return {
-  -- dart
-  {
-    "akinsho/flutter-tools.nvim",
-    enabled = false,
-    lazy = false,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "stevearc/dressing.nvim", -- optional for vim.ui.select
-    },
-    config = true,
-  },
-
   -- go
-  {
-    "olexsmir/gopher.nvim",
-    event = { "BufEnter *.go" },
-    ft = { "go", "gomod" },
-    config = function(_, opts)
-      require("gopher").setup(opts)
-    end,
-  },
+  -- { import = "plugins.code.lang.go" },
 
-  -- proto
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        protols = {},
-        clangd = {
-          filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "hpp" },
-        },
-      },
-    },
-  },
+  -- miscellaneous
+  { import = "plugins.code.lang.misc" },
 
   -- hyprland
-  { import = "plugins.code.lang.hypr" },
+  -- { import = "plugins.code.lang.hypr" },
 
   -- rust
   { import = "plugins.code.lang.rust" },
@@ -43,25 +14,12 @@ return {
   -- python
   { import = "plugins.code.lang.python" },
 
+  -- js
+  -- { import = "plugins.code.lang.js" },
+
   -- json
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        --- @type lspconfig.options.jsonls
-        jsonls = {
-          settings = {
-            json = {
-              schemas = {
-                { fileMatch = { "*.json", "*.jsonc" }, schema = { allowTrailingCommas = true } },
-              },
-            },
-          },
-        },
-      },
-    },
-  },
+  { import = "plugins.code.lang.json" },
 
   -- qml
-  { import = "plugins.code.lang.qml" },
+  -- { import = "plugins.code.lang.qml" },
 }
