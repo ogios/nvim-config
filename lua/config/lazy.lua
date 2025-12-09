@@ -51,3 +51,6 @@ require("lazy").setup({
     },
   },
 })
+
+-- load autocmds on startup
+require("config.autocmds")
