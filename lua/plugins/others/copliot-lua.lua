@@ -1,6 +1,7 @@
 return {
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
+  event = "BufRead",
   dependencies = {
     {
       "nvim-lualine/lualine.nvim",
@@ -23,7 +24,6 @@ return {
       desc = "Copilot panel",
     },
   },
-  -- event = "InsertEnter",
   config = function()
     require("copilot").setup({
       copilot_model = "gpt-4o-copilot",
@@ -37,10 +37,11 @@ return {
         -- plaintext = true,
       },
       panel = {
+        enabled = false,
         -- auto_refresh = true,
-        layout = {
-          position = "right",
-        },
+        -- layout = {
+        --   position = "right",
+        -- },
       },
       suggestion = {
         auto_trigger = true,

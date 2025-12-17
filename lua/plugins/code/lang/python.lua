@@ -1,5 +1,5 @@
 return {
-  { import = "lazyvim.plugins.extras.formatting.black" },
+  -- { import = "lazyvim.plugins.extras.formatting.black" },
 
   {
     "neovim/nvim-lspconfig",
@@ -20,9 +20,16 @@ return {
           -- cmd = { "pyrefly", "lsp", "-v" },
           cmd = {
             vim.fn.expand("~") .. "/work/pyrefly/target/release/pyrefly",
-            -- "/home/ogios/work/pyrefly/target/debug/pyrefly",
             "lsp",
             -- "-v"
+          },
+          mason = false,
+        },
+
+        ty = {
+          cmd = {
+            vim.fn.expand("~") .. "/.local/bin/ty",
+            "server",
           },
           mason = false,
         },
@@ -33,7 +40,7 @@ return {
             settings = {
               logLevel = "error",
               lint = {
-                enable = false,
+                -- enable = false,
               },
             },
           },
@@ -52,6 +59,14 @@ return {
         },
       },
       setup = {
+        pyrefly = function()
+          -- disable pyrefly
+          return true
+        end,
+        -- ty = function()
+        --   -- disable ty
+        --   return true
+        -- end,
         ruff = function()
           Snacks.util.lsp.on({ name = "ruff" }, function(_, client)
             -- Disable hover in favor of Pyright
