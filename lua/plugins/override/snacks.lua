@@ -2,7 +2,36 @@ return {
   -- lazy.nvim
   {
     "folke/snacks.nvim",
+
     keys = {
+      {
+        "<leader><space>",
+        function()
+          print(1)
+          Snacks.picker.buffers({
+            layout = {
+              preview = "main",
+              reverse = true,
+              layout = {
+                backdrop = false,
+                row = -1,
+                width = 0.4,
+                min_width = 80,
+                height = 0.2,
+                min_height = 0.1,
+                border = "bold",
+                box = "vertical",
+                { win = "preview", title = "{preview}", border = true },
+                { win = "list", border = "hpad" },
+                { win = "input", height = 1, border = true, title = "{title} {live} {flags}", title_pos = "center" },
+              },
+            },
+          })
+        end,
+        desc = "buffer",
+        -- remap = true,
+        -- nowait = true,
+      },
       -- {
       --   "<leader>e",
       --   function()
@@ -40,6 +69,51 @@ return {
         -- your explorer configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
+      },
+      picker = {
+        layout = {
+          -- telescope split
+          reverse = true,
+          layout = {
+            box = "horizontal",
+            backdrop = false,
+            width = 0.8,
+            height = 0.9,
+            border = "none",
+            {
+              box = "vertical",
+              { win = "list", title = " Results ", title_pos = "center", border = true },
+              { win = "input", height = 1, border = true, title = "{title} {live} {flags}", title_pos = "center" },
+            },
+            {
+              win = "preview",
+              title = "{preview:Preview}",
+              width = 0.45,
+              border = true,
+              title_pos = "center",
+            },
+          },
+
+          -- ivy split
+          -- preview = "main",
+          -- reverse = true,
+          -- layout = {
+          --   box = "vertical",
+          --   backdrop = false,
+          --   width = 0,
+          --   height = 0.4,
+          --   position = "bottom",
+          --   border = "top",
+          --   title = " {title} {live} {flags}",
+          --   title_pos = "left",
+          --   {
+          --     box = "horizontal",
+          --     { win = "list", border = "none" },
+          --     { win = "preview", title = "{preview}", width = 0.6, border = "left" },
+          --   },
+          --   { win = "input", height = 1, border = "bottom" },
+          -- },
+        },
       },
       -- picker = {
       --   cwd = vim.loop.cwd(),

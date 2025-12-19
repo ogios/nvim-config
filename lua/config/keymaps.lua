@@ -7,6 +7,8 @@ local D = {
     "<leader>/",
     "<M-\\>",
     "<c-/>",
+    -- "<leader><space>",
+    -- "<leader><leader>",
   },
 
   t = {
@@ -45,10 +47,10 @@ local M = {
   { "<C-c>", "<cmd> %y+ <CR>", desc = "Copy whole file", mode = "n" },
   { "qw", "viw", desc = "select word in visual mode", mode = "n" },
 
-  -- fzf-lua
+  -- pick
   { "<leader>fw", LazyVim.pick("live_grep"), desc = "Live grep", mode = "n", remap = true, nowait = true },
   { "<leader>md", LazyVim.pick("commands"), desc = "Find Command", mode = "n" },
-  -- fzf-lua
+  -- pick
 
   -- lsp
   { "<leader>ld", "<CMD>Glance definitions<CR>", desc = "Goto Definition", mode = "n" },
