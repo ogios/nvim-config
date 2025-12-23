@@ -26,7 +26,7 @@ return {
   },
   config = function()
     require("copilot").setup({
-      copilot_model = "gpt-4o-copilot",
+      copilot_model = "gpt-41-copilot",
       filetypes = {
         markdown = true,
         -- gitcommit = true,
