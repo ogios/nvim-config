@@ -59,14 +59,14 @@ return {
         },
       },
       setup = {
-        pyrefly = function()
-          -- disable pyrefly
-          return true
-        end,
-        -- ty = function()
-        --   -- disable ty
+        -- pyrefly = function()
+        --   -- disable pyrefly
         --   return true
         -- end,
+        ty = function()
+          -- disable ty
+          return true
+        end,
         ruff = function()
           Snacks.util.lsp.on({ name = "ruff" }, function(_, client)
             -- Disable hover in favor of Pyright

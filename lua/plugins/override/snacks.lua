@@ -5,9 +5,8 @@ return {
 
     keys = {
       {
-        "<leader><space>",
+        "<leader>fb",
         function()
-          print(1)
           Snacks.picker.buffers({
             layout = {
               preview = "main",
@@ -31,6 +30,47 @@ return {
         desc = "buffer",
         -- remap = true,
         -- nowait = true,
+      },
+      {
+        "<leader>ff",
+        function()
+          Snacks.picker.files({
+            show_empty = true,
+            hidden = true,
+            ignored = true,
+            follow = true,
+          })
+        end,
+        desc = "find files",
+      },
+      {
+        "<leader><space>",
+        function()
+          Snacks.picker.files({
+            show_empty = true,
+            hidden = true,
+            ignored = true,
+            follow = true,
+            layout = {
+              preview = "main",
+              reverse = true,
+              layout = {
+                backdrop = false,
+                row = -1,
+                width = 0.4,
+                min_width = 80,
+                height = 0.2,
+                min_height = 0.1,
+                border = "bold",
+                box = "vertical",
+                { win = "preview", title = "{preview}", border = true },
+                { win = "list", border = "hpad" },
+                { win = "input", height = 1, border = true, title = "{title} {live} {flags}", title_pos = "center" },
+              },
+            },
+          })
+        end,
+        desc = "find files quick",
       },
       -- {
       --   "<leader>e",
