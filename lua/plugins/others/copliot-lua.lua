@@ -12,6 +12,12 @@ return {
         table.insert(opts.sections.lualine_x, 2, "copilot")
       end,
     },
+    {
+      "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
+      config = function()
+        vim.g.copilot_nes_debounce = 500
+      end,
+    },
   },
   keys = {
     -- run `:Copilot panel` when press <M-w> under `n` or `i` mode
@@ -42,6 +48,14 @@ return {
         -- layout = {
         --   position = "right",
         -- },
+      },
+      nes = {
+        enabled = true,
+        keymap = {
+          accept_and_goto = "<leader>p",
+          accept = false,
+          dismiss = "<Esc>",
+        },
       },
       suggestion = {
         auto_trigger = true,
