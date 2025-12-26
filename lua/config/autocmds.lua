@@ -11,7 +11,16 @@ local function my_startup_function()
     if vim.fn.argc() == 0 then
       require("persistence").load()
     end
-  end, 0)
+
+    local timer = vim.uv.new_timer()
+    timer:start(
+      5000,
+      5000,
+      vim.schedule_wrap(function()
+        require("persistence").save()
+      end)
+    )
+  end)
 end
 
 -- Create an autocmd group for managing your autocommands
