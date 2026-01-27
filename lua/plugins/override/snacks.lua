@@ -28,8 +28,6 @@ return {
           })
         end,
         desc = "buffer",
-        -- remap = true,
-        -- nowait = true,
       },
       {
         "<leader>ff",
