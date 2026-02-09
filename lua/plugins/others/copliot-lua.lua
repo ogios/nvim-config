@@ -20,9 +20,8 @@ return {
     },
   },
   keys = {
-    -- run `:Copilot panel` when press <M-w> under `n` or `i` mode
     {
-      "<M-w>",
+      "<C-a>",
       function()
         require("copilot.panel").toggle()
       end,
@@ -43,14 +42,14 @@ return {
         -- plaintext = true,
       },
       panel = {
-        enabled = false,
-        -- auto_refresh = true,
-        -- layout = {
-        --   position = "right",
-        -- },
+        enabled = true,
+        auto_refresh = true,
+        layout = {
+          position = "right",
+        },
       },
       nes = {
-        enabled = true,
+        enabled = false,
         keymap = {
           accept_and_goto = "<leader>p",
           accept = false,
@@ -61,7 +60,7 @@ return {
         auto_trigger = true,
         debounce = 200,
         keymap = {
-          accept = "<M-q>",
+          accept = "<C-q>",
           accept_word = false,
           accept_line = false,
           next = "<M-]>",

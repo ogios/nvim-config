@@ -18,12 +18,15 @@ return {
         --- @type lspconfig.options.pyrefly
         pyrefly = {
           -- cmd = { "pyrefly", "lsp", "-v" },
-          cmd = {
-            vim.fn.expand("~") .. "/work/pyrefly/target/release/pyrefly",
-            "lsp",
-            -- "-v"
-          },
-          mason = false,
+          -- cmd = {
+          --   vim.fn.expand("~") .. "/work/pyrefly/target/release/pyrefly",
+          --   "lsp",
+          --   -- get all path in PYTHONPATH env var
+          --   -- "--site-package-path",
+          --   -- vim.env.PYTHONPATH,
+          --   -- "-v"
+          -- },
+          -- mason = false,
         },
 
         ty = {
@@ -74,6 +77,21 @@ return {
           end)
         end,
       },
+    },
+  },
+  {
+    "mfussenegger/nvim-dap",
+    optional = true,
+    dependencies = {
+      "mfussenegger/nvim-dap-python",
+      -- stylua: ignore
+      keys = {
+        { "<leader>dPt", function() require('dap-python').test_method() end, desc = "Debug Method", ft = "python" },
+        { "<leader>dPc", function() require('dap-python').test_class() end, desc = "Debug Class", ft = "python" },
+      },
+      config = function()
+        require("dap-python").setup("debugpy-adapter")
+      end,
     },
   },
   {

@@ -1,10 +1,13 @@
 return {
   { import = "lazyvim.plugins.extras.lang.docker" },
-  { import = "lazyvim.plugins.extras.lang.markdown" },
+  --{ import = "lazyvim.plugins.extras.lang.markdown" },
   { import = "lazyvim.plugins.extras.lang.git" },
   { import = "lazyvim.plugins.extras.lang.toml" },
   { import = "lazyvim.plugins.extras.lang.yaml" },
   { import = "lazyvim.plugins.extras.formatting.prettier" },
+
+  -- cpp
+  { import = "plugins.code.lang.cpp" },
 
   {
     "neovim/nvim-lspconfig",
@@ -24,8 +27,8 @@ return {
       ensure_installed = {
         "bash",
         "lua",
-        "markdown",
-        "markdown_inline",
+        --"markdown",
+        --"markdown_inline",
         "query",
         "regex",
         "vim",
