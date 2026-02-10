@@ -7,7 +7,7 @@ return {
   { import = "lazyvim.plugins.extras.formatting.prettier" },
 
   -- cpp
-  { import = "plugins.code.lang.cpp" },
+  { import = "lazyvim.plugins.extras.lang.clangd" },
 
   {
     "neovim/nvim-lspconfig",
