@@ -21,9 +21,31 @@ return {
   },
   keys = {
     {
+      "<leader><C-a>",
+      function()
+        if require("copilot.panel").is_open() then
+          require("copilot.panel").close()
+        else
+          require("copilot.panel").open({})
+        end
+      end,
+      mode = { "n" },
+      desc = "Copilot panel",
+    },
+
+    {
       "<C-a>",
       function()
-        require("copilot.panel").toggle()
+        require("copilot.panel").accept()
+      end,
+      mode = { "n", "i" },
+      desc = "Copilot panel",
+    },
+
+    {
+      "<C-e>",
+      function()
+        require("copilot.panel").jump_next()
       end,
       mode = { "n", "i" },
       desc = "Copilot panel",
