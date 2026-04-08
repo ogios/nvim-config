@@ -5,6 +5,12 @@ return {
   version = false, -- Never set this value to "*"! Never!
   opts = {
     provider = "copilot",
+    providers = {
+      copilot = {
+        -- model = "grok-code-fast-1",
+        model = "gpt-5-mini",
+      },
+    },
     mappings = {
       --- @class AvanteConflictMappings
       diff = {
