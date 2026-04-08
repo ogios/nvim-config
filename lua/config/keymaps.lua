@@ -42,6 +42,7 @@ local M = {
   { "<C-j>", "<Down>", desc = "Move down", mode = "i" },
   { "<C-k>", "<Up>", desc = "Move up", mode = "i" },
   { "jk", "<ESC>", desc = "Exit insert mode", mode = "i" },
+  { "<C-e>", "$", desc = "eol", mode = "n" },
 
   { "<Esc>", ":noh <CR>", desc = "Clear highlights", mode = "n" },
   { "<C-c>", "<cmd> %y+ <CR>", desc = "Copy whole file", mode = "n" },
