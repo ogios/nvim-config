@@ -42,14 +42,14 @@ return {
       desc = "Copilot panel",
     },
 
-    {
-      "<C-e>",
-      function()
-        require("copilot.panel").jump_next()
-      end,
-      mode = { "n", "i" },
-      desc = "Copilot panel",
-    },
+    -- {
+    --   "<C-e>",
+    --   function()
+    --     require("copilot.panel").jump_next()
+    --   end,
+    --   mode = { "n", "i" },
+    --   desc = "Copilot panel",
+    -- },
   },
   config = function()
     require("copilot").setup({
