@@ -52,7 +52,7 @@ return {
   --   config = true,
   -- },
   {
-    "rasulomaroff/reactive.nvim",
+    "ogios/reactive.nvim",
     event = "VeryLazy",
     config = true,
     opts = {
