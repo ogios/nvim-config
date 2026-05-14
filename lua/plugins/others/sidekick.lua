@@ -1,6 +1,6 @@
 return {
   "folke/sidekick.nvim",
-  enabled = false,
+  -- enabled = false,
   opts = {
     -- add any options here
     cli = {
@@ -15,7 +15,7 @@ return {
   },
   keys = {
     {
-      "<M-s>",
+      "<Tab>",
       function()
         -- if there is a next edit, jump to it, otherwise apply it if any
         if not require("sidekick").nes_jump_or_apply() then
@@ -24,6 +24,7 @@ return {
       end,
       expr = true,
       desc = "Goto/Apply Next Edit Suggestion",
+      mode = { "n", "v" },
     },
     {
       "<c-.>",

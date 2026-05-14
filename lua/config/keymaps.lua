@@ -42,7 +42,7 @@ local M = {
   { "<C-j>", "<Down>", desc = "Move down", mode = "i" },
   { "<C-k>", "<Up>", desc = "Move up", mode = "i" },
   { "jk", "<ESC>", desc = "Exit insert mode", mode = "i" },
-  { "jk", "<C-\\><C-n>", desc = "Exit terminal mode", mode = "t" },
+  { "<C-n><C-\\>", "<C-\\><C-n>", desc = "Exit terminal mode", mode = "t" },
 
   { "<Esc>", ":noh <CR>", desc = "Clear highlights", mode = "n" },
   { "<C-c>", "<cmd> %y+ <CR>", desc = "Copy whole file", mode = "n" },
@@ -83,8 +83,8 @@ local M = {
     "remove buffer",
     mode = "n",
   },
-  { "<Tab>", "<CMD>bnext<CR>", "Next tab", mode = "n" },
-  { "<S-Tab>", "<CMD>bprevious<CR>", "Previous tab", mode = "n" },
+  -- { "<Tab>", "<CMD>bnext<CR>", "Next tab", mode = "n" },
+  -- { "<S-Tab>", "<CMD>bprevious<CR>", "Previous tab", mode = "n" },
   -- buffer
 }
 

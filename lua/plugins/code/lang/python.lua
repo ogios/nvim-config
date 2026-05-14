@@ -1,3 +1,16 @@
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  -- vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = {
+    "/workspaces/moveit_control/src/elfin_robot_ros2/**/*.py",
+    vim.fn.expand("~") .. "/work/huimao/paint-robot/moveit_control/src/elfin_robot_ros2/**/*.py",
+  },
+  callback = function()
+    vim.b.autoformat = false
+    -- vim.b.autoformat = false
+    -- require("lazyvim.plugins.lsp.format").autoformat = false
+  end,
+})
+
 return {
   -- { import = "lazyvim.plugins.extras.formatting.black" },
 
@@ -27,6 +40,31 @@ return {
           --   -- "-v"
           -- },
           -- mason = false,
+          -- init_options for the pyrefly language server. Converted from JSON-like
+          -- structure to a proper Lua table so this file can be loaded by Neovim.
+          init_options = {
+            pyrefly = {
+              disabledLanguageServices = {
+                hover = false,
+                documentSymbol = false,
+                workspaceSymbol = false,
+                inlayHint = false,
+                completion = false,
+                codeAction = false,
+                definition = false,
+                declaration = false,
+                typeDefinition = false,
+                references = false,
+                documentHighlight = false,
+                rename = false,
+                codeLens = false,
+                semanticTokens = false,
+                signatureHelp = false,
+                implementation = false,
+                callHierarchy = false,
+              },
+            },
+          },
         },
 
         ty = {

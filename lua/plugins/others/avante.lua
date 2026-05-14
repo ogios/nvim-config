@@ -1,6 +1,6 @@
 return {
   "yetone/avante.nvim",
-  -- enabled = false,
+  enabled = false,
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
   opts = {
@@ -58,12 +58,9 @@ return {
   build = "make",
   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
-    "nvim-treesitter/nvim-treesitter",
-    "stevearc/dressing.nvim",
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
     --- The below dependencies are optional,
-    "ibhagwan/fzf-lua", -- for file_selector provider fzf
     "nvim-mini/mini.icons",
     {
       "zbirenbaum/copilot.lua",
