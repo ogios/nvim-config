@@ -1,23 +1,19 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
+-- 快捷键设置
+-- 移除LazyVim相关配置，使用原生vim.keymap.set
 
+-- 删除一些不需要的快捷键
 local D = {
   n = {
     "<leader>/",
     "<M-\\>",
     "<c-/>",
-    -- "<leader><space>",
-    -- "<leader><leader>",
   },
-
   t = {
     "<M-\\>",
     "<C-/>",
   },
 }
 
--- delete keymap
 for mode, modeval in pairs(D) do
   for _, val in pairs(modeval) do
     pcall(function()
@@ -26,71 +22,40 @@ for mode, modeval in pairs(D) do
   end
 end
 
-local Util = require("lazyvim.util")
-local lazyterm = function()
-  Snacks.terminal(nil, { cwd = Util.root() })
-end
----@type LazyKeysLspSpec[]
-local M = {
-  { "p", 'p:let @+=@0<CR>:let @"=@0<CR>', desc = "Dont copy replaced text", mode = { "x", "v", "n" } },
-  { "<M-\\>", "<cmd>close<cr>", desc = "Close terminal (root dir)", mode = "t" },
-  { "<M-\\>", lazyterm, desc = "Terminal (root dir)", mode = "n" },
-  { "<C-b>", "<ESC>^i", desc = "Beginning of line", mode = "i" },
-  { "<C-e>", "<End>", desc = "End of line", mode = { "n", "i" } },
-  { "<C-h>", "<Left>", desc = "Move left", mode = "i" },
-  { "<C-l>", "<Right>", desc = "Move right", mode = "i" },
-  { "<C-j>", "<Down>", desc = "Move down", mode = "i" },
-  { "<C-k>", "<Up>", desc = "Move up", mode = "i" },
-  { "jk", "<ESC>", desc = "Exit insert mode", mode = "i" },
-  { "<C-n><C-\\>", "<C-\\><C-n>", desc = "Exit terminal mode", mode = "t" },
+-- 通用快捷键
+vim.keymap.set("n", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Don't copy replaced text", silent = true })
+vim.keymap.set("x", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Don't copy replaced text", silent = true })
+vim.keymap.set("v", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Don't copy replaced text", silent = true })
 
-  { "<Esc>", ":noh <CR>", desc = "Clear highlights", mode = "n" },
-  { "<C-c>", "<cmd> %y+ <CR>", desc = "Copy whole file", mode = "n" },
-  { "qw", "viw", desc = "select word in visual mode", mode = "n" },
+-- 插入模式快捷键
+vim.keymap.set("i", "<C-b>", "<ESC>^i", { desc = "Beginning of line", silent = true })
+vim.keymap.set("i", "<C-e>", "<End>", { desc = "End of line", silent = true })
+vim.keymap.set("i", "<C-h>", "<Left>", { desc = "Move left", silent = true })
+vim.keymap.set("i", "<C-l>", "<Right>", { desc = "Move right", silent = true })
+vim.keymap.set("i", "<C-j>", "<Down>", { desc = "Move down", silent = true })
+vim.keymap.set("i", "<C-k>", "<Up>", { desc = "Move up", silent = true })
+vim.keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode", silent = true })
 
-  -- pick
-  { "<leader>fw", LazyVim.pick("live_grep"), desc = "Live grep", mode = "n", remap = true, nowait = true },
-  { "<leader>md", LazyVim.pick("commands"), desc = "Find Command", mode = "n" },
-  -- pick
+-- 终端模式快捷键
+vim.keymap.set("t", "<C-n><C-\\>", "<C-\\><C-n>", { desc = "Exit terminal mode", silent = true })
 
-  -- lsp
-  { "<leader>ld", "<CMD>Glance definitions<CR>", desc = "Goto Definition", mode = "n" },
-  { "<leader>lr", "<CMD>Glance references<CR>", desc = "Goto References", mode = "n" },
-  { "<leader>lY", "<CMD>Glance type_definitions<CR>", desc = "Goto Type Definition", mode = "n" },
-  { "<leader>lI", "<CMD>Glance implementations<CR>", desc = "Goto Implementation", mode = "n" },
-  { "<leader>lD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
-  -- lsp
+-- 普通模式快捷键
+vim.keymap.set("n", "<Esc>", ":noh <CR>", { desc = "Clear highlights", silent = true })
+vim.keymap.set("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file", silent = true })
+vim.keymap.set("n", "qw", "viw", { desc = "Select word in visual mode", silent = true })
 
-  -- window size
-  { "<C-A-Up>", "<CMD>resize +5<CR>", desc = "increase window height", mode = "n" },
-  { "<C-A-Down>", "<CMD>resize -5<CR>", desc = "increase window height", mode = "n" },
-  { "<C-A-Left>", "<CMD>vertical resize -5<CR>", desc = "increase window height", mode = "n" },
-  { "<C-A-Right>", "<CMD>vertical resize +5<CR>", desc = "increase window height", mode = "n" },
-  -- window size
+-- LSP快捷键
+vim.keymap.set("n", "<leader>ld", "<CMD>Glance definitions<CR>", { desc = "Goto Definition", silent = true })
+vim.keymap.set("n", "<leader>lr", "<CMD>Glance references<CR>", { desc = "Goto References", silent = true })
+vim.keymap.set("n", "<leader>lY", "<CMD>Glance type_definitions<CR>", { desc = "Goto Type Definition", silent = true })
+vim.keymap.set("n", "<leader>lI", "<CMD>Glance implementations<CR>", { desc = "Goto Implementation", silent = true })
+vim.keymap.set("n", "<leader>lD", vim.lsp.buf.declaration, { desc = "Goto Declaration", silent = true })
 
-  -- buffer
-  {
-    "<leader>dq",
-    function()
-      Snacks.bufdelete()
-    end,
-    "remove buffer",
-    mode = "n",
-  },
-  -- { "<Tab>", "<CMD>bnext<CR>", "Next tab", mode = "n" },
-  -- { "<S-Tab>", "<CMD>bprevious<CR>", "Previous tab", mode = "n" },
-  -- buffer
-}
+-- 窗口大小调整
+vim.keymap.set("n", "<C-A-Up>", "<CMD>resize +5<CR>", { desc = "Increase window height", silent = true })
+vim.keymap.set("n", "<C-A-Down>", "<CMD>resize -5<CR>", { desc = "Decrease window height", silent = true })
+vim.keymap.set("n", "<C-A-Left>", "<CMD>vertical resize -5<CR>", { desc = "Decrease window width", silent = true })
+vim.keymap.set("n", "<C-A-Right>", "<CMD>vertical resize +5<CR>", { desc = "Increase window width", silent = true })
 
-local map = LazyVim.safe_keymap_set
-for _, m in pairs(M) do
-  if vim.isarray(m.mode) then
-    for _, mode in ipairs(m.mode) do
-      map(mode, m[1], m[2], { desc = m.desc, remap = m.remap, nowait = m.nowait, silent = m.silent })
-    end
-  elseif m.mode then
-    map(m.mode, m[1], m[2], { desc = m.desc, remap = m.remap, nowait = m.nowait, silent = m.silent })
-  else
-    map("n", m[1], m[2], { desc = m.desc, remap = m.remap, nowait = m.nowait, silent = m.silent })
-  end
-end
+-- 缓冲区操作
+vim.keymap.set("n", "<leader>dq", "<CMD>bdelete<CR>", { desc = "Delete buffer", silent = true })

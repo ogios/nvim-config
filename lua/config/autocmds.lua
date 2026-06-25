@@ -1,34 +1,44 @@
--- Autocmds are automatically loaded on the VeryLazy event
--- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
--- Add any additional autocmds here
+-- 自动命令设置
+-- 移除LazyVim相关配置
 
 local function my_startup_function()
-  -- notify time
-  LazyVim.info("startup in: " .. require("lazy.stats").stats().startuptime .. "ms", { title = "Startup Time" })
+  -- 通知启动时间
+  local startuptime = vim.fn.reltime(vim.g.start_time)
+  vim.notify("startup in: " .. vim.fn.reltimestr(startuptime) .. "s", vim.log.levels.INFO)
 
-  -- enter old session
+  -- 恢复旧会话
   vim.schedule(function()
     if vim.fn.argc() == 0 then
-      require("persistence").load()
+      local ok, persistence = pcall(require, "persistence")
+      if ok then
+        persistence.load()
+      end
     end
 
+    -- 每5秒自动保存会话
     local timer = vim.uv.new_timer()
     timer:start(
       5000,
       5000,
       vim.schedule_wrap(function()
-        require("persistence").save()
+        local ok, persistence = pcall(require, "persistence")
+        if ok then
+          persistence.save()
+        end
       end)
     )
   end)
 end
 
--- Create an autocmd group for managing your autocommands
+-- 记录启动时间
+vim.g.start_time = vim.fn.reltime()
+
+-- 创建自动命令组
 local augroup = vim.api.nvim_create_augroup("StartupGroup", { clear = true })
 
--- Create the autocommand to call your function on the "UIEnter" event
+-- 在UIEnter事件时调用启动函数
 vim.api.nvim_create_autocmd("UIEnter", {
   group = augroup,
   callback = my_startup_function,
-  once = true, -- Set once = true if you only want it to run the first time a UI attaches
+  once = true, -- 只在第一次UI附加时运行
 })
