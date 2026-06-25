@@ -13,6 +13,7 @@ return {
   dependencies = {
     "zbirenbaum/copilot.lua",
   },
+  event = "VeryLazy",
   keys = {
     {
       "<Tab>",

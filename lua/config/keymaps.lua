@@ -59,12 +59,6 @@ local M = {
   { "<leader>lY", "<CMD>Glance type_definitions<CR>", desc = "Goto Type Definition", mode = "n" },
   { "<leader>lI", "<CMD>Glance implementations<CR>", desc = "Goto Implementation", mode = "n" },
   { "<leader>lD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
-  {
-    "<leader>lra",
-    require("live-rename").map({ insert = true }),
-    desc = "live-rename",
-    mode = "n",
-  },
   -- lsp
 
   -- window size

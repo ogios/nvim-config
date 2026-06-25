@@ -12,7 +12,6 @@ return {
     end,
   },
 
-  { "saecki/live-rename.nvim", event = "BufEnter" },
   {
     "dnlhc/glance.nvim",
     event = "BufEnter",
