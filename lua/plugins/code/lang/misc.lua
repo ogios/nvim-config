@@ -1,3 +1,15 @@
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+--
+-- if capabilities.workspace then
+--   capabilities.workspace.didChangeWatchedFiles = {
+--     dynamicRegistration = true,
+--   }
+-- end
+--
+-- vim.lsp.config("*", {
+--   capabilities = capabilities,
+-- })
+
 return {
   { import = "lazyvim.plugins.extras.lang.docker" },
   --{ import = "lazyvim.plugins.extras.lang.markdown" },
