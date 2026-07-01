@@ -1,11 +1,6 @@
 return {
 
   {
-    "wavded/vim-stylus",
-    event = { "BufEnter" },
-  },
-
-  {
     "nvim-treesitter/nvim-treesitter-context",
     opts = function(_, opts)
       opts.multiline_threshold = 6
