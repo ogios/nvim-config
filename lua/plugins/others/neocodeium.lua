@@ -4,7 +4,7 @@ return {
   event = "VeryLazy",
   keys = {
     {
-      "<tab>",
+      "<C-q>",
       function()
         require("neocodeium").accept()
       end,
