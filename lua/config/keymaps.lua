@@ -80,6 +80,34 @@ local M = {
   -- { "<Tab>", "<CMD>bnext<CR>", "Next tab", mode = "n" },
   -- { "<S-Tab>", "<CMD>bprevious<CR>", "Previous tab", mode = "n" },
   -- buffer
+
+  -- scroll under insert
+  { "<M-k>", "<C-x><C-y>", desc = "Scroll up", mode = "i" },
+  { "<M-j>", "<C-x><C-e>", desc = "Scroll down", mode = "i" },
+  {
+    "<M-u>",
+    function()
+      -- get how many line does the current window has
+      lines = vim.api.nvim_win_get_height(0) / 2
+      for i in ipairs(vim.fn.range(1, math.floor(lines))) do
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-x><C-y>", true, false, true), "n", false)
+      end
+    end,
+    desc = "Scroll half page up",
+    mode = "i",
+  },
+  {
+    "<M-d>",
+    function()
+      lines = vim.api.nvim_win_get_height(0) / 2
+      for i in ipairs(vim.fn.range(1, math.floor(lines))) do
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-x><C-e>", true, false, true), "n", false)
+      end
+    end,
+    desc = "Scroll half page down",
+    mode = "i",
+  },
+  -- movement under insert
 }
 
 local map = LazyVim.safe_keymap_set
