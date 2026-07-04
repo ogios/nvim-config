@@ -107,21 +107,32 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
 return {
   -- { import = "lazyvim.plugins.extras.formatting.black" },
-
   {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
         --- @type lspconfig.options.basedpyright
-        -- basedpyright = {
-        --   settings = {
-        --     basedpyright = {
-        --       analysis = {
-        --         typeCheckingMode = "standard",
-        --       },
-        --     },
-        --   },
-        -- },
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              analysis = {
+                typeCheckingMode = "standard",
+                -- deprecateTypingAliases = false,
+                diagnosticSeverityOverrides = {
+                  reportDeprecated = "false",
+                },
+              },
+            },
+            -- python = {
+            --   analysis = {
+            --     -- we can this setting below to redefine some diagnostics
+            --     diagnosticSeverityOverrides = {
+            --       deprecateTypingAliases = false,
+            --     },
+            --   },
+            -- },
+          },
+        },
         --- @type lspconfig.options.pyrefly
         pyrefly = {
           -- cmd = {
@@ -133,6 +144,11 @@ return {
           --   -- "-v"
           -- },
           -- mason = false,
+          settings = {
+            pyrefly = {
+              typeCheckingMode = "strict",
+            },
+          },
         },
 
         ty = {
@@ -173,12 +189,13 @@ return {
         },
       },
       setup = {
+        basedpyright = function()
+          return true
+        end,
         -- pyrefly = function()
-        --   -- disable pyrefly
         --   return true
         -- end,
         ty = function()
-          -- disable ty
           return true
         end,
         ruff = function()

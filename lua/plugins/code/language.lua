@@ -22,4 +22,7 @@ return {
 
   -- qml
   -- { import = "plugins.code.lang.qml" },
+
+  -- luau
+  { import = "plugins.code.lang.luau" },
 }
