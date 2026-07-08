@@ -115,6 +115,7 @@ return {
         basedpyright = {
           settings = {
             basedpyright = {
+              disableLanguageServices = true,
               analysis = {
                 typeCheckingMode = "standard",
                 -- deprecateTypingAliases = false,
@@ -136,7 +137,8 @@ return {
         --- @type lspconfig.options.pyrefly
         pyrefly = {
           -- cmd = {
-          --   vim.fn.expand("~") .. "/work/pyrefly/target/release/pyrefly",
+          --   "./pyrefly",
+          --   -- vim.fn.expand("~") .. "/work/pyrefly/target/release/pyrefly",
           --   "lsp",
           --   -- get all path in PYTHONPATH env var
           --   -- "--site-package-path",
@@ -145,8 +147,11 @@ return {
           -- },
           -- mason = false,
           settings = {
-            pyrefly = {
-              typeCheckingMode = "strict",
+            python = {
+              pyrefly = {
+                typeCheckingMode = "strict",
+                disableTypeErrors = true,
+              },
             },
           },
         },
@@ -189,9 +194,9 @@ return {
         },
       },
       setup = {
-        basedpyright = function()
-          return true
-        end,
+        -- basedpyright = function()
+        --   return true
+        -- end,
         -- pyrefly = function()
         --   return true
         -- end,
