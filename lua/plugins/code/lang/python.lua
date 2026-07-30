@@ -11,35 +11,30 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
--- vim.api.nvim_create_autocmd("BufEnter", {
---   desc = "Execute hook after switching to a buffer",
+-- RUNNING = false
+-- vim.api.nvim_create_autocmd("BufReadPost", {
+--   desc = "Execute hook after opening a py file",
+--   pattern = { "*.py" },
 --   callback = function()
---     if vim.bo.filetype == "python" then
---       vim.defer_fn(function()
---         vim.api.nvim_feedkeys("ii", "n", false)
---         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
---         -- vim.cmd("set readonly")
---
---         -- -- 2. 动态注册一个单次执行的 Autocmd，等待诊断回复
---         -- vim.api.nvim_create_autocmd("LspNotify", {
---         --   pattern = "textDocument/publishDiagnostics",
---         --   once = true, -- 执行一次后自动销毁
---         --   callback = function(args)
---         --     -- -- 确保这个回复是当前文件的诊断回复
---         --     -- if args.data.method == "textDocument/publishDiagnostics" and args.data.bufnr == bufnr then
---         --     --   vim.schedule(function()
---         --     --     vim.api.nvim_feedkeys("u", "n", false)
---         --     --   end)
---         --     --   return true -- 解除绑定
---         --     -- end
---         --   end,
---         -- })
---
---         vim.defer_fn(function()
---           vim.api.nvim_feedkeys("u", "n", false)
---         end, 100)
---       end, 100)
+--     if RUNNING then
+--       return
 --     end
+--
+--     RUNNING = true
+--     vim.defer_fn(function()
+--       if vim.bo.filetype ~= "python" then
+--         return
+--       end
+--
+--       LazyVim.info("trigger ty reload")
+--       vim.api.nvim_feedkeys("ii", "n", false)
+--       vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+--
+--       vim.defer_fn(function()
+--         vim.api.nvim_feedkeys("u", "n", false)
+--         RUNNING = false
+--       end, 10)
+--     end, 100)
 --   end,
 -- })
 
@@ -78,32 +73,32 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 --   end,
 -- })
 
--- vim.api.nvim_create_autocmd("BufEnter", {
---   desc = "Directly notify LSP to reload the buffer",
---   callback = function()
---     if vim.bo.filetype == "python" then
---       vim.schedule(function()
---         -- 遍历当前 Buffer 附加的所有 LSP 客户端
---         local clients = vim.lsp.get_clients({ bufnr = 0 })
---         for _, client in ipairs(clients) do
---           -- 强行触发一次完整的文件同步通知
---           if client.rpc and client.rpc.notify then
---             local params = vim.lsp.util.make_text_document_params()
---             -- 让 LSP 认为该文件刚刚被打开/刷新了
---             client.rpc.notify("textDocument/didOpen", {
---               textDocument = {
---                 uri = params.uri,
---                 languageId = "python",
---                 version = 1,
---                 text = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), "\n"),
---               },
---             })
---           end
---         end
---       end)
---     end
---   end,
--- })
+vim.api.nvim_create_autocmd("BufReadPost", {
+  desc = "Directly notify LSP to reload the buffer",
+  pattern = { "*.py" },
+  callback = function()
+    LazyVim.info("111")
+    vim.schedule(function()
+      -- 遍历当前 Buffer 附加的所有 LSP 客户端
+      local clients = vim.lsp.get_clients({ bufnr = 0 })
+      for _, client in ipairs(clients) do
+        -- 强行触发一次完整的文件同步通知
+        if client.rpc and client.rpc.notify then
+          local params = vim.lsp.util.make_text_document_params()
+          -- 让 LSP 认为该文件刚刚被打开/刷新了
+          client.rpc.notify("textDocument/didOpen", {
+            textDocument = {
+              uri = params.uri,
+              languageId = "python",
+              version = 1,
+              text = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), "\n"),
+            },
+          })
+        end
+      end
+    end)
+  end,
+})
 
 return {
   -- { import = "lazyvim.plugins.extras.formatting.black" },
@@ -194,15 +189,15 @@ return {
         },
       },
       setup = {
-        -- basedpyright = function()
-        --   return true
-        -- end,
-        -- pyrefly = function()
-        --   return true
-        -- end,
-        ty = function()
+        basedpyright = function()
           return true
         end,
+        pyrefly = function()
+          return true
+        end,
+        -- ty = function()
+        --   return true
+        -- end,
         ruff = function()
           Snacks.util.lsp.on({ name = "ruff" }, function(_, client)
             -- Disable hover in favor of Pyright
