@@ -1,0 +1,12 @@
+{
+  "assert is not None": {
+    "prefix": ["ainn", "assertnn", "notnone"],
+    "body": "assert ${1:${TM_SELECTED_TEXT:var}} is not None$0",
+    "description": "Assert value is not None for LSP/type checker narrowing"
+  },
+  "assert is not None with message": {
+    "prefix": ["ainnm", "assertnnm"],
+    "body": "assert ${1:${TM_SELECTED_TEXT:var}} is not None, \"${2:$1 must not be None}\"$0",
+    "description": "Assert value is not None with message (type narrowing)"
+  }
+}
