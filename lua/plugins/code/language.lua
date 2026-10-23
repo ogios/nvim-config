@@ -21,7 +21,7 @@ return {
   { import = "plugins.code.lang.json" },
 
   -- xml
-  { import = "plugins.code.lang.xml" },
+  -- { import = "plugins.code.lang.xml" },
 
   -- qml
   -- { import = "plugins.code.lang.qml" },
